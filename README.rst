@@ -28,13 +28,14 @@ Install
 Basic usage
 ===========
 
-.. code-block:: js
+.. code:: js
+
     import createMarker from 'react-content-marker';
 
     const parsers = [
         {
             rule: 'world',
-            tag: x => <mark title='Target of the greeting'>{ x }</mark>,
+            tag: x => <mark title='Target'>{ x }</mark>,
         },
         {
             rule: /(hello)/i,
@@ -47,7 +48,7 @@ Basic usage
     render(<MyMarker>Hello, world!</MyMarker>);
 
     // Renders:
-    <mark title='Greeting'>Hello</mark>, <mark title='Greeting'>world</mark>!
+    <mark title='Greeting'>Hello</mark>, <mark title='Target'>world</mark>!
 
 
 Advanced usage
@@ -63,14 +64,20 @@ Parsers are simple objects. They must define two attributes: ``rule`` and
 in the content. ``tag`` is a function that takes the matched content and returns
 a React Node (a string, null, a React Component, etc. ).
 
+You can use as many parsers as you want. However, note that once a part of your
+input has been marked by a rule, it will be ignored for all following rules.
+That means that the order of your parsers is very important.
+
 When using regex, you will need to have at least one pair of capturing
 parentheses, as that is what is used to extract the matched content. If your
 regex is complex and uses several capturing parentheses, by default this library
 will choose the last non-null match available. If you want to match a different
 group, you can define a ``matchIndex`` attribute in your parser. That integer
-will be used to choose the captured group to return. Here's an example:
+will be used to choose the captured group to return. Here are examples:
 
-.. code-block:: js
+.. code:: js
+
+    // Without `matchIndex`.
     const parsers = [
         {
             rule: /(hello (world|folks))/i,
@@ -79,10 +86,13 @@ will be used to choose the captured group to return. Here's an example:
     ];
     const MyMarker = createMarker(parsers);
     render(<MyMarker>Hello, world!</MyMarker>);
+
     // Renders:
     Hello, <mark>world</mark>!
 
-.. code-block:: js
+.. code:: js
+
+    // With `matchIndex`.
     const parsers = [
         {
             rule: /(hello (world|folks))/i,
@@ -92,6 +102,7 @@ will be used to choose the captured group to return. Here's an example:
     ];
     const MyMarker = createMarker(parsers);
     render(<MyMarker>Hello, world!</MyMarker>);
+
     // Renders:
     <mark>Hello, world</mark>!
 
