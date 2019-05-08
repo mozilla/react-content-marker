@@ -1,0 +1,55 @@
+{
+  "name": "react-content-marker",
+  "version": "1.0.0",
+  "description": "Content Marker for React",
+  "repository": "github:mozilla/react-content-marker",
+  "author": "Adrian Gaudebert <adrian@gaudebert.fr>",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "react",
+    "marker",
+    "highlight",
+    "mark",
+    "term",
+    "text",
+    "word",
+    "match",
+    "occurence",
+    "substring"
+  ],
+  "main": "build/index.js",
+  "scripts": {
+    "build": "babel src --out-dir build --ignore 'src/**/*.test.js','src/setupTests.js'",
+    "flow": "flow",
+    "test": "jest src/",
+    "prepublish": "npm test && npm run flow && npm run build"
+  },
+  "files": [
+    "build"
+  ],
+  "dependencies": {
+    "shortid": "^2.2.14"
+  },
+  "peerDependencies": {
+    "react": "^16.0.1",
+    "react-dom": "^16.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
+    "flow-bin": "^0.98.1",
+    "jest": "^24.7.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "jest": {
+    "setupFiles": [
+      "./src/setupTests.js"
+    ]
+  }
+}
