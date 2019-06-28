@@ -34,6 +34,17 @@ describe('markRegExp', () => {
         expect(res).toEqual(expected);
     });
 
+    it('correctly marks unusual spaces', () => {
+        const content = 'hello world ';
+
+        const res = markRegExp(content, /( +$)/, x => <mark>{x}</mark>);
+        const expected = [
+            'hello world',
+            <mark>{ ' ' }</mark>,
+        ];
+        expect(res).toEqual(expected);
+    });
+
     it('correctly marks the entire content', () => {
         const content = 'horse';
 

@@ -43,15 +43,26 @@ export default function markRegExp(
             match = matches.reduce((acc, cur) => cur || acc, '');
         }
 
-        const [previous, ...rest] = remaining.split(match);
+        // Take only the part that can contain the match.
+        const matchingContent = remaining.slice(matches.index);
+        // Then split only that part.
+        const [previous, ...rest] = matchingContent.split(match);
 
+        // Reconstruct everything before the match.
+        let beginning = remaining.slice(0, matches.index);
         if (previous) {
-            output.push(previous);
+            beginning += previous;
+        }
+        // Reconstruct everything after the match.
+        remaining = remaining.slice(beginning.length + match.length);
+
+        // Add the parts that have been parsed to the output.
+        if (beginning) {
+            output.push(beginning);
         }
         output.push(tag(match));
 
         // Compute the next step.
-        remaining = rest.join(match);
         matches = rule.exec(remaining);
     }
 
