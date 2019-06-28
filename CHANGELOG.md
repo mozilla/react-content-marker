@@ -2,6 +2,8 @@
 
 ## Current
 
+## 1.0.2 (June 28, 2019)
+
 - Do not mark content out of matching context (#1)[https://github.com/mozilla/react-content-marker/issues/1].
 
 ## 1.0.1 (May 8, 2019)
