@@ -21,7 +21,7 @@
   "scripts": {
     "build": "babel src --out-dir build --ignore 'src/**/*.test.js','src/setupTests.js'",
     "flow": "flow",
-    "test": "jest src/",
+    "test": "jest --watch src/",
     "prepublish": "npm test && npm run flow && npm run build"
   },
   "files": [
