@@ -103,6 +103,31 @@ render(<MyMarker>Hello, world!</MyMarker>);
 <mark>Hello, world</mark>!
 ```
 
+### The `mark` function
+
+You can also directly access the `mark` function. That can be useful if you
+need to combine different stacks of parsers, and don't want, or cannot, just
+merge the lists of rules (not that is almost always a better and simpler
+solution). For example, if you want to create a Higher-Order Marker that
+combines with another Marker.
+
+`mark` takes the content to mark and all properties of a rule as parameters,
+and outputs the marked content as an array of strings and React nodes.
+See its definition:
+
+```js
+function mark(
+    content: string | Array<string | React.Node>,
+    rule: string | RegExp,
+    tag: (string) => React.Node,
+    matchIndex: ?number,
+): Array<string | React.Node>
+```
+
+Note however that this function doesn't perform some of the niceties
+`createMarker` does. For example, it doesn't automatically add a `key` to the
+tagged elements, which might create warnings in your code.
+
 
 ## Contributing
 
