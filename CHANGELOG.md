@@ -2,6 +2,8 @@
 
 ## Current
 
+## 1.1.0 (July 17, 2019)
+
 - Expose `mark` function publicly (#2)[https://github.com/mozilla/react-content-marker/issues/2].
 
 ## 1.0.2 (June 28, 2019)
