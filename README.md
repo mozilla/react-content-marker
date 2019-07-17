@@ -107,7 +107,7 @@ render(<MyMarker>Hello, world!</MyMarker>);
 
 You can also directly access the `mark` function. That can be useful if you
 need to combine different stacks of parsers, and don't want, or cannot, just
-merge the lists of rules (not that is almost always a better and simpler
+merge the lists of rules (which should almost always be a better and simpler
 solution). For example, if you want to create a Higher-Order Marker that
 combines with another Marker.
 
