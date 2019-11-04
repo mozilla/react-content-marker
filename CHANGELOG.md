@@ -2,6 +2,11 @@
 
 ## Current
 
+## 1.1.1 (November 4, 2019)
+
+- Update vulnerable dependencies.
+- Bumps lodash from 4.17.11 to 4.17.15 (#4)[https://github.com/mozilla/react-content-marker/pull/4].
+
 ## 1.1.0 (July 17, 2019)
 
 - Expose `mark` function publicly (#2)[https://github.com/mozilla/react-content-marker/issues/2].
