@@ -2,6 +2,10 @@
 
 ## Current
 
+## 1.1.2 (March 31, 2020)
+
+- Upgrade dependencies.
+
 ## 1.1.1 (November 4, 2019)
 
 - Update vulnerable dependencies.
