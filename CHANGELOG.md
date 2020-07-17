@@ -2,6 +2,10 @@
 
 ## Current
 
+## 1.1.3 (July 17, 2020)
+
+- Bumps lodash from 4.17.15 to 4.17.19 (#4)[https://github.com/mozilla/react-content-marker/pull/6].
+
 ## 1.1.2 (March 31, 2020)
 
 - Upgrade dependencies.
