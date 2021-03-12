@@ -1,5 +1,3 @@
-/* @flow */
-
 import * as React from 'react';
 import shortid from 'shortid';
 
@@ -7,14 +5,14 @@ import mark from './mark';
 
 
 type Props = {
-    children: ?string | Array<string | React.Node>,
+    children: string | null | undefined | Array<string | React.ReactNode>;
 };
 
 
 export type Parser = {
-    rule: string | RegExp,
-    tag: (string) => React.Element<any>,
-    matchIndex?: number,
+    rule: string | RegExp;
+    tag: (input: string) => React.ReactElement<any>;
+    matchIndex?: number;
 };
 
 
@@ -22,7 +20,7 @@ export type Parser = {
  * Returns a clone of the element returned by the tag function, but makes sure
  * that it has a `key` attribute.
  */
-function enhanceTag(tag: (string) => React.Element<any>) {
+function enhanceTag(tag: (input: string) => React.ReactElement<any>) {
     return (x: string) => {
         const elt = tag(x);
         return React.cloneElement(elt, { key: shortid.generate() });

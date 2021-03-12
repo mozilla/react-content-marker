@@ -18,12 +18,13 @@
     "substring"
   ],
   "main": "build/index.js",
+  "types": "build/index.d.js",
   "scripts": {
-    "build": "babel src --out-dir build --ignore 'src/**/*.test.js','src/setupTests.js'",
-    "flow": "flow",
+    "build": "babel src --out-dir build --extensions '.ts,.tsx' --ignore 'src/**/*.test.tsx','src/setupTests.js'",
+    "declarations": "tsc -b tsconfig.defs.json",
     "test": "jest --watch",
     "test-once": "jest",
-    "prepublishOnly": "npm run test-once && npm run flow && npm run build"
+    "prepublishOnly": "npm run test-once && npm run build && npm run declarations"
   },
   "files": [
     "build"
@@ -39,14 +40,18 @@
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
-    "@babel/preset-flow": "^7.9.0",
     "@babel/preset-react": "^7.9.4",
+    "@babel/preset-typescript": "^7.13.0",
+    "@types/enzyme": "^3.10.8",
+    "@types/jest": "^26.0.20",
+    "@types/react": "^17.0.3",
+    "@types/shortid": "0.0.29",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
-    "flow-bin": "^0.98.1",
     "jest": "^24.9.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "typescript": "^4.2.3"
   },
   "jest": {
     "setupFiles": [

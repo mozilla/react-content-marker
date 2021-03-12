@@ -1,8 +1,8 @@
 {
     "presets": [
         "@babel/preset-react",
-        "@babel/preset-flow",
-        "@babel/preset-env"
+        "@babel/preset-env",
+        "@babel/preset-typescript"
     ],
     "ignore": [
         "node_modules",

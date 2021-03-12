@@ -1,5 +1,3 @@
-/* @flow */
-
 import createMarker from './createMarker';
 export { default as mark } from './mark';
 

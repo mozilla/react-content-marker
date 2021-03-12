@@ -1,5 +1,3 @@
-/* @flow */
-
 import * as React from 'react';
 
 
@@ -17,18 +15,17 @@ import * as React from 'react';
  * @param {number} matchIndex The index of the match to use when marking with
  * a RegExp. If not provided, will use the last non-null match available.
  *
- * @returns {Array} An array of strings and React components, similar to the
- * original content but where each matching pattern has been replaced by a
- * marking component.
+ * @returns {React.ReactNodeArray} A ReactNodeArray of strings and components,
+ * similar to the original content but where each matching pattern has been
+ * replaced by a marking component.
  */
 export default function markRegExp(
     content: string,
     rule: RegExp,
-    tag: (string) => React.Node,
-    matchIndex: ?number,
-): Array<string | React.Node> {
-    const output = [];
-
+    tag: (input: string) => React.ReactNode,
+    matchIndex?: number,
+): React.ReactNodeArray {
+    const output:React.ReactNodeArray = [];
     let remaining = content;
     let matches = rule.exec(remaining);
 
