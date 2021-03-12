@@ -8,9 +8,9 @@ describe('createMarker', () => {
     it('returns a correct component', () => {
         const content = 'A horse, a horse, my kingdom for a horse.';
         const parsers = [
-            { rule: 'horse', tag: x => <i>{x}</i> },
-            { rule: /(a)/gi, tag: x => <b>{x}</b> },
-            { rule: /king\w+/, tag: x => <u>{x}</u> },
+            { rule: 'horse', tag: (x:string) => <i>{x}</i> },
+            { rule: /(a)/gi, tag: (x:string) => <b>{x}</b> },
+            { rule: /king\w+/, tag: (x:string) => <u>{x}</u> },
         ];
         const ContentMarker = createMarker(parsers);
 

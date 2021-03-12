@@ -1,5 +1,3 @@
-/* @flow */
-
 import * as React from 'react';
 
 
@@ -15,15 +13,15 @@ import * as React from 'react';
  * a React component or a string. The value returned by that function will
  * replace the term in the output.
  *
- * @returns {Array} An array of strings and React components, similar to the
- * original content but where each matching term has been replaced by a
- * marking component.
+ * @returns {React.ReactNodeArray} A ReactNodeArray of strings and components,
+ * similar to the original content but where each matching pattern has been
+ * replaced by a marking component.
  */
 export default function markTerm(
     content: string,
     term: string,
-    tag: (string) => React.Node
-): Array<string | React.Node> {
+    tag: (input: string) => React.ReactNode,
+): React.ReactNodeArray {
     const output = [];
 
     const pos = content.indexOf(term);

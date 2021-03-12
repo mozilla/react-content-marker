@@ -1,5 +1,3 @@
-/* @flow */
-
 import * as React from 'react';
 
 import markRegExp from './markRegExp';
@@ -9,7 +7,7 @@ import markTerm from './markTerm';
 /**
  * Replaces matching patterns in a string with markers.
  *
- * @param {string | Array} content The content to parse and mark.
+ * @param {string | React.ReactNodeArray} content The content to parse and mark.
  *
  * @param {string | RegExp} rule The pattern to search and replace in the
  * content.
@@ -21,16 +19,16 @@ import markTerm from './markTerm';
  * @param {number} matchIndex The index of the match to use when marking with
  * a RegExp. If not provided, will use the last non-null match available.
  *
- * @returns {Array} An array of strings and React components, similar to the
- * original content but where each matching pattern has been replaced by a
- * marking component.
+ * @returns {React.ReactNodeArray} A ReactNodeArray of strings and components,
+ * similar to the original content but where each matching pattern has been
+ * replaced by a marking component.
  */
 export default function mark(
-    content: string | Array<string | React.Node>,
+    content: string | React.ReactNodeArray,
     rule: string | RegExp,
-    tag: (string) => React.Node,
-    matchIndex: ?number,
-): Array<string | React.Node> {
+    tag: (input: string) => React.ReactNode,
+    matchIndex?: number,
+): React.ReactNodeArray {
     if (!Array.isArray(content)) {
         content = [content];
     }
@@ -39,16 +37,16 @@ export default function mark(
         throw Error('Unsupported rule type for rule `' + rule + '`.');
     }
 
-    const output = [];
+    const output:React.ReactNodeArray = [];
 
     for (let part of content) {
         if (typeof part === 'string') {
-            let marked;
+            let marked: React.ReactNodeArray;
 
             if (rule instanceof RegExp) {
                 marked = markRegExp(part, rule, tag, matchIndex);
             }
-            else if (typeof rule === 'string') {
+            else {
                 marked = markTerm(part, rule, tag);
             }
 
@@ -59,5 +57,5 @@ export default function mark(
         }
     }
 
-    return [].concat(...output);
+    return ([] as React.ReactNodeArray).concat(...output);
 }

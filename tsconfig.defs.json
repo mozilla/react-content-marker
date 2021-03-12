@@ -1,0 +1,9 @@
+{
+    "extends": "./tsconfig.json",
+    "exclude": ["**/*.test.tsx"],
+    "compilerOptions": {
+        "declaration": true,
+        "emitDeclarationOnly": true,
+        "isolatedModules": true
+    }
+}
