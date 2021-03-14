@@ -2,19 +2,13 @@ import * as React from 'react';
 import shortid from 'shortid';
 
 import mark from './mark';
+import type { Parser, TagFunction } from './types'
 
 
 type Props = {
     children: string | null | undefined | Array<string | React.ReactNode>;
 };
 
-export type TagFunction = (input: string) => React.ReactElement<any>;
-
-export type Parser = {
-    rule: string | RegExp;
-    tag: TagFunction;
-    matchIndex?: number;
-};
 
 
 /**

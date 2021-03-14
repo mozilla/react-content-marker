@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import markRegExp from './markRegExp';
 import markTerm from './markTerm';
-import type {TagFunction} from './createMarker';
+import type {TagFunction} from './types';
 
 
 /**
