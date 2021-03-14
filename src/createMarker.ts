@@ -8,10 +8,11 @@ type Props = {
     children: string | null | undefined | Array<string | React.ReactNode>;
 };
 
+export type TagFunction = (input: string) => React.ReactElement<any>;
 
 export type Parser = {
     rule: string | RegExp;
-    tag: (input: string) => React.ReactElement<any>;
+    tag: TagFunction;
     matchIndex?: number;
 };
 
@@ -20,7 +21,7 @@ export type Parser = {
  * Returns a clone of the element returned by the tag function, but makes sure
  * that it has a `key` attribute.
  */
-function enhanceTag(tag: (input: string) => React.ReactElement<any>) {
+function enhanceTag(tag: TagFunction) {
     return (x: string) => {
         const elt = tag(x);
         return React.cloneElement(elt, { key: shortid.generate() });

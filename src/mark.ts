@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import markRegExp from './markRegExp';
 import markTerm from './markTerm';
+import type {TagFunction} from './createMarker';
 
 
 /**
@@ -13,7 +14,7 @@ import markTerm from './markTerm';
  * content.
  *
  * @param {Function} tag A function that takes the match string and must return
- * a React component or a string. The value returned by that function will
+ * a React element. The value returned by that function will
  * replace the term in the output.
  *
  * @param {number} matchIndex The index of the match to use when marking with
@@ -26,7 +27,7 @@ import markTerm from './markTerm';
 export default function mark(
     content: string | React.ReactNodeArray,
     rule: string | RegExp,
-    tag: (input: string) => React.ReactNode,
+    tag: TagFunction,
     matchIndex?: number,
 ): React.ReactNodeArray {
     if (!Array.isArray(content)) {

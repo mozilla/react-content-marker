@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import type {TagFunction} from './createMarker';
+
 
 /**
  * Replaces matching terms in a string with markers.
@@ -20,7 +22,7 @@ import * as React from 'react';
 export default function markTerm(
     content: string,
     term: string,
-    tag: (input: string) => React.ReactNode,
+    tag: TagFunction,
 ): React.ReactNodeArray {
     const output = [];
 
