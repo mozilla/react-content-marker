@@ -2,6 +2,11 @@
 
 ## Current
 
+## 2.0.0 (TBD)
+
+- Convert to TypeScript (#7)[https://github.com/mozilla/react-content-marker/issues/7].
+- Publish `.d.ts` type definitions as part of the package.
+
 ## 1.1.3 (July 17, 2020)
 
 - Bumps lodash from 4.17.15 to 4.17.19 (#4)[https://github.com/mozilla/react-content-marker/pull/6].
