@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import type {TagFunction} from './createMarker';
+
 
 /**
  * Replaces matching patterns in a string with markers.
@@ -22,7 +24,7 @@ import * as React from 'react';
 export default function markRegExp(
     content: string,
     rule: RegExp,
-    tag: (input: string) => React.ReactNode,
+    tag: TagFunction,
     matchIndex?: number,
 ): React.ReactNodeArray {
     const output:React.ReactNodeArray = [];
