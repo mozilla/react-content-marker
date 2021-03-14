@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import type {TagFunction} from './createMarker';
+import type {TagFunction} from './types';
 
 
 /**
