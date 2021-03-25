@@ -131,15 +131,15 @@ tagged elements, which might create warnings in your code.
 
 ## Contributing
 
-This code relies on unit tests (with Jest) and type checking (with Flow).
+This code relies on unit tests (with Jest) and type checking (with TypeScript).
 
 ### Running tests
 
 `npm test`
 
-### Running Flow checks
+### Running TypeScript checks
 
-`npm run flow`
+`npm run declarations`
 
 ### Building
 
