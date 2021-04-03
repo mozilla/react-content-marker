@@ -1,6 +1,7 @@
 import React from 'react';
 
 import markRegExp from './markRegExp';
+import markTerm from "./markTerm";
 
 
 describe('markRegExp', () => {
@@ -113,5 +114,42 @@ describe('markRegExp', () => {
             '.',
         ];
         expect(res).toEqual(expected);
+    });
+
+
+    it('pass the position of a placeable', () => {
+        const content = 'A horse, a horse, my kingdom for a horse and another kingdom.';
+        const tagMock = jest.fn(x => <mark>{x}</mark>)
+        const regex = /(another|kingdom)/;
+        const placeholder1 = "another"
+        const placeholder2 = "kingdom"
+
+        const res = markRegExp(content, regex, tagMock);
+        const expected = [
+            'A horse, a horse, my ',
+            <mark>{'kingdom'}</mark>,
+            ' for a horse and ',
+            <mark>{'another'}</mark>,
+            ' ',
+            <mark>{'kingdom'}</mark>,
+            '.'
+        ]
+        expect(res).toEqual(expected);
+        expect(tagMock.mock.calls.length).toBe(3);
+        expect(tagMock.mock.calls[0]).toEqual([placeholder2, 21, 28])
+        expect(tagMock.mock.calls[1]).toEqual([placeholder1, 45, 52])
+        expect(tagMock.mock.calls[2]).toEqual([placeholder2, 53, 60])
+
+        let [, startPos, endPos] = tagMock.mock.calls[0];
+        expect(endPos - startPos).toEqual(placeholder2.length);
+        expect(content.substring(startPos, endPos)).toEqual(placeholder2);
+
+        [, startPos, endPos] = tagMock.mock.calls[1];
+        expect(endPos - startPos).toEqual(placeholder1.length);
+        expect(content.substring(startPos, endPos)).toEqual(placeholder1);
+
+        [, startPos, endPos] = tagMock.mock.calls[2];
+        expect(endPos - startPos).toEqual(placeholder2.length);
+        expect(content.substring(startPos, endPos)).toEqual(placeholder2);
     });
 });

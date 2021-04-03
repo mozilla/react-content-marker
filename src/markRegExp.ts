@@ -30,8 +30,9 @@ export default function markRegExp(
     const output:React.ReactNodeArray = [];
     let remaining = content;
     let matches = rule.exec(remaining);
-
+    let startPos = 0;
     while (matches) {
+        startPos += matches.index
         let match;
         if (typeof matchIndex !== 'undefined' && matchIndex !== null) {
             match = matches[matchIndex];
@@ -41,7 +42,6 @@ export default function markRegExp(
             // capture groups in the rule.
             match = matches.reduce((acc, cur) => cur || acc, '');
         }
-
         // Take only the part that can contain the match.
         const matchingContent = remaining.slice(matches.index);
         // Then split only that part.
@@ -59,7 +59,9 @@ export default function markRegExp(
         if (beginning) {
             output.push(beginning);
         }
-        output.push(tag(match));
+
+        output.push(tag(match, startPos, startPos+match.length));
+        startPos += match.length;
 
         // Compute the next step.
         matches = rule.exec(remaining);

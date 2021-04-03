@@ -16,8 +16,8 @@ type Props = {
  * that it has a `key` attribute.
  */
 function enhanceTag(tag: TagFunction) {
-    return (x: string) => {
-        const elt = tag(x);
+    return (input: string, startPos: number, endPos: number) => {
+        const elt = tag(input, startPos, endPos);
         return React.cloneElement(elt, { key: shortid.generate() });
     };
 }

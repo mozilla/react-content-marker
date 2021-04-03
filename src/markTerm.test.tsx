@@ -73,4 +73,22 @@ describe('markTerm', () => {
         const expected = [content];
         expect(res).toEqual(expected);
     });
+
+    it('pass the position of a placeable', () => {
+        const content = 'A horse, a horse, my kingdom for a horse and another kingdom.';
+        const tagMock = jest.fn(x => <mark>{x}</mark>)
+        const placeholder  = "kingdom"
+        markTerm(content, placeholder, tagMock);
+        expect(tagMock.mock.calls.length).toBe(2);
+        expect(tagMock.mock.calls[0]).toEqual([placeholder, 21, 28])
+        expect(tagMock.mock.calls[1]).toEqual([placeholder, 53, 60])
+
+        let [, startPos, endPos] = tagMock.mock.calls[0];
+        expect(endPos - startPos).toEqual(placeholder.length);
+        expect(content.substring(startPos, endPos)).toEqual(placeholder);
+
+        [, startPos, endPos] = tagMock.mock.calls[1];
+        expect(endPos - startPos).toEqual(placeholder.length);
+        expect(content.substring(startPos, endPos)).toEqual(placeholder);
+    });
 });

@@ -34,15 +34,21 @@ export default function markTerm(
 
     const parts = content.split(term);
 
-    for (let i = 0; i < parts.length - 1; i++) {
+    let lastIndex = parts.length -1;
+    let startPos = 0;
+
+    for (let i = 0; i < lastIndex; i++) {
         if (parts[i]) {
+            startPos += parts[i].length
             output.push(parts[i]);
         }
-        output.push(tag(term));
+
+        output.push(tag(term, startPos, startPos + term.length));
+        startPos += term.length;
     }
 
-    if (parts[parts.length - 1]) {
-        output.push(parts[parts.length - 1]);
+    if (parts[lastIndex]) {
+        output.push(parts[lastIndex]);
     }
 
     return output;
