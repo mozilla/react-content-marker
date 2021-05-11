@@ -2,7 +2,9 @@
 
 ## Current
 
-## 2.0.0 (TBD)
+- Upgrade dependencies to their latest versions (jest 26, React 17, and many more).
+
+## 2.0.0 (April 25, 2021)
 
 - Convert to TypeScript (#7)[https://github.com/mozilla/react-content-marker/issues/7].
 - Publish `.d.ts` type definitions as part of the package.
