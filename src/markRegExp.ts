@@ -17,7 +17,7 @@ import type {TagFunction} from './types';
  * @param {number} matchIndex The index of the match to use when marking with
  * a RegExp. If not provided, will use the last non-null match available.
  *
- * @returns {React.ReactNodeArray} A ReactNodeArray of strings and components,
+ * @returns {React.ReactNode[]} An array of strings and components,
  * similar to the original content but where each matching pattern has been
  * replaced by a marking component.
  */
@@ -26,8 +26,8 @@ export default function markRegExp(
     rule: RegExp,
     tag: TagFunction,
     matchIndex?: number,
-): React.ReactNodeArray {
-    const output:React.ReactNodeArray = [];
+): React.ReactNode[] {
+    const output: React.ReactNode[] = [];
     let remaining = content;
     let matches = rule.exec(remaining);
 
