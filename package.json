@@ -29,9 +29,6 @@
     "!build/*.test.d.ts",
     "!build/*.test.js"
   ],
-  "dependencies": {
-    "shortid": "^2.2.16"
-  },
   "peerDependencies": {
     "react": "^16.0.1",
     "react-dom": "^16.0.1"
