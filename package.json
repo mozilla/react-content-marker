@@ -30,8 +30,8 @@
     "!build/*.test.js"
   ],
   "peerDependencies": {
-    "react": "^16.0.1",
-    "react-dom": "^16.0.1"
+    "react": ">=16",
+    "react-dom": ">=16"
   },
   "devDependencies": {
     "@types/enzyme": "^3.10.8",
