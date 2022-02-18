@@ -18,7 +18,7 @@
     "substring"
   ],
   "main": "build/index.js",
-  "types": "build/index.d.js",
+  "types": "build/index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "jest",

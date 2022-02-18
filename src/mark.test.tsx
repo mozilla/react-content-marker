@@ -1,6 +1,6 @@
 import React from 'react';
 
-import mark from './mark';
+import { mark } from './index';
 import markRegExp from './markRegExp';
 import markTerm from './markTerm';
 
