@@ -21,9 +21,8 @@
   "types": "build/index.d.js",
   "scripts": {
     "build": "tsc",
-    "test": "jest --watch",
-    "test-once": "jest",
-    "prepublishOnly": "npm run build && pm run test-once"
+    "test": "jest",
+    "prepublishOnly": "npm run build && npm test"
   },
   "files": [
     "build",
@@ -38,10 +37,6 @@
     "react-dom": "^16.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.0",
-    "@babel/preset-env": "^7.14.1",
-    "@babel/preset-react": "^7.13.13",
-    "@babel/preset-typescript": "^7.13.0",
     "@types/enzyme": "^3.10.8",
     "@types/jest": "^27.4.0",
     "@types/react": "^17.0.5",
@@ -51,11 +46,7 @@
     "jest": "^27.5.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "ts-jest": "^27.1.3",
     "typescript": "^4.2.4"
-  },
-  "jest": {
-    "setupFiles": [
-      "./src/setupTests.js"
-    ]
   }
 }
