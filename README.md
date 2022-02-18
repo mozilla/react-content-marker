@@ -137,10 +137,6 @@ This code relies on unit tests (with Jest) and type checking (with TypeScript).
 
 `npm test`
 
-### Running TypeScript checks
-
-`npm run declarations`
-
 ### Building
 
 `npm run build`

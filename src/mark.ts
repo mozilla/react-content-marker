@@ -25,11 +25,11 @@ import type {TagFunction} from './types';
  * replaced by a marking component.
  */
 export default function mark(
-    content: string | React.ReactNodeArray,
+    content: string | React.ReactNode[],
     rule: string | RegExp,
     tag: TagFunction,
     matchIndex?: number,
-): React.ReactNodeArray {
+): React.ReactNode[] {
     if (!Array.isArray(content)) {
         content = [content];
     }
@@ -38,7 +38,7 @@ export default function mark(
         throw Error('Unsupported rule type for rule `' + rule + '`.');
     }
 
-    const output:React.ReactNodeArray = [];
+    const output: React.ReactNode[] = [];
 
     for (let part of content) {
         if (typeof part === 'string') {
@@ -58,5 +58,5 @@ export default function mark(
         }
     }
 
-    return ([] as React.ReactNodeArray).concat(...output);
+    return ([] as React.ReactNode[]).concat(...output);
 }

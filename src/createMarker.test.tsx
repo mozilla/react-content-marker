@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import createMarker from './createMarker';
+import createMarker from './index';
 
 
 describe('createMarker', () => {

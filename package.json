@@ -18,44 +18,32 @@
     "substring"
   ],
   "main": "build/index.js",
-  "types": "build/index.d.js",
+  "types": "build/index.d.ts",
   "scripts": {
-    "build": "babel src --out-dir build --extensions '.ts,.tsx' --ignore 'src/**/*.test.tsx','src/setupTests.js'",
-    "declarations": "tsc -b tsconfig.defs.json",
-    "test": "jest --watch",
-    "test-once": "jest",
-    "prepublishOnly": "npm run test-once && npm run build && npm run declarations"
+    "build": "tsc",
+    "test": "jest",
+    "prepublishOnly": "npm run build && npm test"
   },
   "files": [
-    "build"
+    "build",
+    "!build/*.test.d.ts",
+    "!build/*.test.js"
   ],
-  "dependencies": {
-    "shortid": "^2.2.16"
-  },
   "peerDependencies": {
-    "react": "^16.0.1",
-    "react-dom": "^16.0.1"
+    "react": ">=16",
+    "react-dom": ">=16"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.16",
-    "@babel/core": "^7.14.0",
-    "@babel/preset-env": "^7.14.1",
-    "@babel/preset-react": "^7.13.13",
-    "@babel/preset-typescript": "^7.13.0",
     "@types/enzyme": "^3.10.8",
-    "@types/jest": "^26.0.23",
+    "@types/jest": "^27.4.0",
     "@types/react": "^17.0.5",
-    "@types/shortid": "0.0.29",
+    "@types/shortid": "^0.0.29",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
-    "jest": "26.6.3",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "jest": "^27.5.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "ts-jest": "^27.1.3",
     "typescript": "^4.2.4"
-  },
-  "jest": {
-    "setupFiles": [
-      "./src/setupTests.js"
-    ]
   }
 }

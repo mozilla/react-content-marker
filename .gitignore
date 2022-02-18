@@ -4,6 +4,9 @@ build/
 # Node modules
 node_modules/
 
+# Hidden files
+.*
+
 # Logs
 logs
 *.log

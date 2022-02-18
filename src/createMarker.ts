@@ -1,5 +1,4 @@
 import * as React from 'react';
-import shortid from 'shortid';
 
 import mark from './mark';
 import type { Parser, TagFunction } from './types'
@@ -9,7 +8,7 @@ type Props = {
     children: string | null | undefined | Array<string | React.ReactNode>;
 };
 
-
+let keyCounter = 0
 
 /**
  * Returns a clone of the element returned by the tag function, but makes sure
@@ -18,7 +17,7 @@ type Props = {
 function enhanceTag(tag: TagFunction) {
     return (x: string) => {
         const elt = tag(x);
-        return React.cloneElement(elt, { key: shortid.generate() });
+        return React.cloneElement(elt, { key: ++keyCounter });
     };
 }
 
