@@ -1,6 +1,6 @@
 {
   "name": "react-content-marker",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Content Marker for React",
   "repository": "github:mozilla/react-content-marker",
   "author": "Adrian Gaudebert <adrian@gaudebert.fr>",

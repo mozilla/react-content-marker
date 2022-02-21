@@ -1,8 +1,13 @@
-# Master
+# Changelog
 
-## Current
+## 2.1.0 (February 21, 2022)
 
-- Upgrade dependencies to their latest versions (jest 26, React 17, and many more).
+- Use `tsc` rather than `babel` for the build
+- Replace dependency on `shortid` with a simple counter instead
+- Mark peerDependency on `react` more liberally
+- Use `ts-jest` & add tests for built code
+- Add CI tests with GitHub Actions
+- Update dev dependencies
 
 ## 2.0.0 (April 25, 2021)
 
