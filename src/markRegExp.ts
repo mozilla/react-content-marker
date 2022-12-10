@@ -1,26 +1,26 @@
 import * as React from 'react';
 
-import type { TagFunction } from './types';
+import type { TagFunction } from './index';
 
 /**
  * Replaces matching patterns in a string with markers.
  *
- * @param {string} content The content to parse and mark.
+ * @param content The content to parse and mark.
  *
- * @param {RegExp} rule The pattern to search and replace in the content.
+ * @param rule The pattern to search and replace in the content.
  *
- * @param {Function} tag A function that takes the match string and must return
+ * @param tag A function that takes the match string and must return
  * a React component or a string. The value returned by that function will
  * replace the term in the output.
  *
- * @param {number} matchIndex The index of the match to use when marking with
+ * @param matchIndex The index of the match to use when marking with
  * a RegExp. If not provided, will use the last non-null match available.
  *
- * @returns {React.ReactNode[]} An array of strings and components,
+ * @returns An array of strings and components,
  * similar to the original content but where each matching pattern has been
  * replaced by a marking component.
  */
-export default function markRegExp(
+export function markRegExp(
     content: string,
     rule: RegExp,
     tag: TagFunction,
@@ -32,10 +32,10 @@ export default function markRegExp(
 
     while (matches) {
         let match;
-        if (typeof matchIndex !== 'undefined' && matchIndex !== null) {
+        if (typeof matchIndex === 'number') {
             match = matches[matchIndex];
         } else {
-            // Use the last non-null matching form. This is to support several
+            // Use the last non-empty matching form. This is to support several
             // capture groups in the rule.
             match = matches.reduce((acc, cur) => cur || acc, '');
         }
@@ -43,7 +43,7 @@ export default function markRegExp(
         // Take only the part that can contain the match.
         const matchingContent = remaining.slice(matches.index);
         // Then split only that part.
-        const [previous, ...rest] = matchingContent.split(match);
+        const [previous] = matchingContent.split(match);
 
         // Reconstruct everything before the match.
         let beginning = remaining.slice(0, matches.index);

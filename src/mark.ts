@@ -1,29 +1,29 @@
 import * as React from 'react';
 
-import markRegExp from './markRegExp';
-import markTerm from './markTerm';
-import type { TagFunction } from './types';
+import type { TagFunction } from './index';
+import { markRegExp } from './markRegExp';
+import { markTerm } from './markTerm';
 
 /**
  * Replaces matching patterns in a string with markers.
  *
- * @param {string | React.ReactNodeArray} content The content to parse and mark.
+ * @param content The content to parse and mark.
  *
- * @param {string | RegExp} rule The pattern to search and replace in the
+ * @param rule The pattern to search and replace in the
  * content.
  *
- * @param {Function} tag A function that takes the match string and must return
+ * @param tag A function that takes the match string and must return
  * a React element. The value returned by that function will
  * replace the term in the output.
  *
- * @param {number} matchIndex The index of the match to use when marking with
+ * @param matchIndex The index of the match to use when marking with
  * a RegExp. If not provided, will use the last non-null match available.
  *
- * @returns {React.ReactNodeArray} A ReactNodeArray of strings and components,
+ * @returns An array of strings and components,
  * similar to the original content but where each matching pattern has been
  * replaced by a marking component.
  */
-export default function mark(
+export function mark(
     content: string | React.ReactNode[],
     rule: string | RegExp,
     tag: TagFunction,
@@ -33,27 +33,23 @@ export default function mark(
         content = [content];
     }
 
-    if (!(rule instanceof RegExp || typeof rule === 'string')) {
-        throw Error('Unsupported rule type for rule `' + rule + '`.');
-    }
-
     const output: React.ReactNode[] = [];
-
     for (let part of content) {
         if (typeof part === 'string') {
-            let marked: React.ReactNodeArray;
-
+            let marked;
             if (rule instanceof RegExp) {
                 marked = markRegExp(part, rule, tag, matchIndex);
-            } else {
+            } else if (typeof rule === 'string') {
                 marked = markTerm(part, rule, tag);
+            } else {
+                throw Error(`Unsupported rule type for rule ${rule}.`);
             }
 
-            output.push(marked);
+            output.push(...marked);
         } else {
             output.push(part);
         }
     }
 
-    return ([] as React.ReactNode[]).concat(...output);
+    return output;
 }

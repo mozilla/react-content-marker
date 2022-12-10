@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import createMarker from './index';
+import { createMarker } from './createMarker';
 
 describe('createMarker', () => {
     it('returns a correct component', () => {

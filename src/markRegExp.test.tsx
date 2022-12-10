@@ -1,4 +1,4 @@
-import markRegExp from './markRegExp';
+import { markRegExp } from './markRegExp';
 
 describe('markRegExp', () => {
     it('correctly marks matches of a simple pattern', () => {
