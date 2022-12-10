@@ -1,9 +1,6 @@
-import React from 'react';
-
 import { mark } from './index';
 import markRegExp from './markRegExp';
 import markTerm from './markTerm';
-
 
 describe('mark', () => {
     it('works correctly with a `term` rule', () => {

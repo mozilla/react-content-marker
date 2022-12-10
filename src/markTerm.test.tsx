@@ -1,7 +1,4 @@
-import React from 'react';
-
 import markTerm from './markTerm';
-
 
 describe('markTerm', () => {
     it('correctly marks several strings in the content', () => {
