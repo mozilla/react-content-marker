@@ -22,13 +22,19 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "prepublishOnly": "npm run build && npm test"
+    "prepublishOnly": "npm run build && npm test",
+    "prettier": "prettier --write src/"
   },
   "files": [
     "build",
     "!build/*.test.d.ts",
     "!build/*.test.js"
   ],
+  "prettier": {
+    "arrowParens": "avoid",
+    "singleQuote": true,
+    "tabWidth": 4
+  },
   "peerDependencies": {
     "react": ">=16",
     "react-dom": ">=16"
@@ -39,6 +45,7 @@
     "@types/react": "^18.0.26",
     "jest": "^29.3.1",
     "jest-environment-jsdom": "^29.3.1",
+    "prettier": "^2.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "ts-jest": "^29.0.3",
