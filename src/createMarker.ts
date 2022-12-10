@@ -1,14 +1,13 @@
 import * as React from 'react';
 
 import mark from './mark';
-import type { Parser, TagFunction } from './types'
-
+import type { Parser, TagFunction } from './types';
 
 type Props = {
     children: string | null | undefined | Array<string | React.ReactNode>;
 };
 
-let keyCounter = 0
+let keyCounter = 0;
 
 /**
  * Returns a clone of the element returned by the tag function, but makes sure
@@ -20,7 +19,6 @@ function enhanceTag(tag: TagFunction) {
         return React.cloneElement(elt, { key: ++keyCounter });
     };
 }
-
 
 /**
  * Creates a React component class to mark content based on rules.
@@ -57,5 +55,5 @@ export default function createMarker(parsers: Array<Parser>) {
 
             return content;
         }
-    }
+    };
 }

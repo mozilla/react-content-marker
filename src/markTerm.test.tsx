@@ -7,11 +7,11 @@ describe('markTerm', () => {
         const res = markTerm(content, 'horse', x => <mark>{x}</mark>);
         const expected = [
             'A ',
-            <mark>{ 'horse' }</mark>,
+            <mark>{'horse'}</mark>,
             ', a ',
-            <mark>{ 'horse' }</mark>,
+            <mark>{'horse'}</mark>,
             ', my kingdom for a ',
-            <mark>{ 'horse' }</mark>,
+            <mark>{'horse'}</mark>,
             '.',
         ];
         expect(res).toEqual(expected);
@@ -22,7 +22,7 @@ describe('markTerm', () => {
 
         const res = markTerm(content, 'A', x => <mark>{x}</mark>);
         const expected = [
-            <mark>{ 'A' }</mark>,
+            <mark>{'A'}</mark>,
             ' horse, a horse, my kingdom for a horse.',
         ];
         expect(res).toEqual(expected);
@@ -34,7 +34,7 @@ describe('markTerm', () => {
         const res = markTerm(content, 'horse.', x => <mark>{x}</mark>);
         const expected = [
             'A horse, a horse, my kingdom for a ',
-            <mark>{ 'horse.' }</mark>,
+            <mark>{'horse.'}</mark>,
         ];
         expect(res).toEqual(expected);
     });
@@ -43,22 +43,18 @@ describe('markTerm', () => {
         const content = 'horse';
 
         const res = markTerm(content, 'horse', x => <mark>{x}</mark>);
-        const expected = [
-            <mark>{ 'horse' }</mark>,
-        ];
+        const expected = [<mark>{'horse'}</mark>];
         expect(res).toEqual(expected);
     });
 
     it('supports attributes in tag', () => {
         const content = 'word';
 
-        const res = markTerm(
-            content, content, x => <mark title='Word Finder'>{x}</mark>
-        );
+        const res = markTerm(content, content, x => (
+            <mark title="Word Finder">{x}</mark>
+        ));
 
-        const expected = [
-            <mark title='Word Finder'>{ 'word' }</mark>,
-        ];
+        const expected = [<mark title="Word Finder">{'word'}</mark>];
         expect(res).toEqual(expected);
     });
 
