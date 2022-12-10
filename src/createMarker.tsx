@@ -20,21 +20,28 @@ let keyCounter = 0;
  * `matchIndex` parameter, a number that will be used when using a RegExp to
  * chose which match to pass to the `tag` function.
  *
+ * @param wrapTag If defined, wraps each tag with a common wrapper function.
+ * The default wrapper returns a clone of the element returned by the tag function,
+ * but makes sure that it has a `key` attribute.
+ *
  * @returns A functional component that applies `parsers` to its `children`.
  */
 export const createMarker =
-    (parsers: Array<Parser>): React.FC<{ children: ReactNode | ReactNode[] }> =>
+    (
+        parsers: Array<Parser>,
+        wrapTag?: (tag: Parser['tag']) => Parser['tag']
+    ): React.FC<{ children: ReactNode | ReactNode[] }> =>
     ({ children }) => {
         if (!children) {
             return null;
         }
 
+        wrapTag ??= tag => (x: string) =>
+            cloneElement(tag(x), { key: ++keyCounter });
+
         let res: ReactNode[] = Array.isArray(children) ? children : [children];
         for (let parser of parsers) {
-            // Returns a clone of the element returned by the tag function,
-            // but makes sure that it has a `key` attribute.
-            const tag = (x: string) =>
-                cloneElement(parser.tag(x), { key: ++keyCounter });
+            const tag = wrapTag(parser.tag);
             res = mark(res, parser.rule, tag, parser.matchIndex);
         }
 
