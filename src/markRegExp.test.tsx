@@ -1,7 +1,4 @@
-import React from 'react';
-
 import markRegExp from './markRegExp';
-
 
 describe('markRegExp', () => {
     it('correctly marks matches of a simple pattern', () => {
@@ -10,11 +7,11 @@ describe('markRegExp', () => {
         const res = markRegExp(content, /(horse)/, x => <mark>{x}</mark>);
         const expected = [
             'A ',
-            <mark>{ 'horse' }</mark>,
+            <mark>{'horse'}</mark>,
             ', a ',
-            <mark>{ 'horse' }</mark>,
+            <mark>{'horse'}</mark>,
             ', my kingdom for a ',
-            <mark>{ 'horse' }</mark>,
+            <mark>{'horse'}</mark>,
             '.',
         ];
         expect(res).toEqual(expected);
@@ -25,11 +22,11 @@ describe('markRegExp', () => {
 
         const res = markRegExp(content, /(f\w+)/i, x => <mark>{x}</mark>);
         const expected = [
-            <mark>{ 'Foux' }</mark>,
+            <mark>{'Foux'}</mark>,
             ' du ',
-            <mark>{ 'fa' }</mark>,
+            <mark>{'fa'}</mark>,
             ' ',
-            <mark>{ 'fa' }</mark>,
+            <mark>{'fa'}</mark>,
         ];
         expect(res).toEqual(expected);
     });
@@ -38,10 +35,7 @@ describe('markRegExp', () => {
         const content = 'hello world ';
 
         const res = markRegExp(content, /( +$)/, x => <mark>{x}</mark>);
-        const expected = [
-            'hello world',
-            <mark>{ ' ' }</mark>,
-        ];
+        const expected = ['hello world', <mark> </mark>];
         expect(res).toEqual(expected);
     });
 
@@ -49,22 +43,18 @@ describe('markRegExp', () => {
         const content = 'horse';
 
         const res = markRegExp(content, /(horse)/, x => <mark>{x}</mark>);
-        const expected = [
-            <mark>{ 'horse' }</mark>,
-        ];
+        const expected = [<mark>{'horse'}</mark>];
         expect(res).toEqual(expected);
     });
 
     it('supports attributes in tag', () => {
         const content = 'word';
 
-        const res = markRegExp(
-            content, /(word)/, x => <mark title='Word Finder'>{x}</mark>
-        );
+        const res = markRegExp(content, /(word)/, x => (
+            <mark title="Word Finder">{x}</mark>
+        ));
 
-        const expected = [
-            <mark title='Word Finder'>{ 'word' }</mark>,
-        ];
+        const expected = [<mark title="Word Finder">{'word'}</mark>];
         expect(res).toEqual(expected);
     });
 
@@ -80,15 +70,17 @@ describe('markRegExp', () => {
     it('supports having several capturing groups in the rule', () => {
         const content = 'A horse, a horse, my kingdom for a horse.';
 
-        const res = markRegExp(content, /(a (horse)|A (horse))/, x => <mark>{x}</mark>);
+        const res = markRegExp(content, /(a (horse)|A (horse))/, x => (
+            <mark>{x}</mark>
+        ));
 
         const expected = [
             'A ',
-            <mark>{ 'horse' }</mark>,
+            <mark>{'horse'}</mark>,
             ', a ',
-            <mark>{ 'horse' }</mark>,
+            <mark>{'horse'}</mark>,
             ', my kingdom for a ',
-            <mark>{ 'horse' }</mark>,
+            <mark>{'horse'}</mark>,
             '.',
         ];
         expect(res).toEqual(expected);
@@ -105,11 +97,11 @@ describe('markRegExp', () => {
         );
 
         const expected = [
-            <mark>{ 'A horse' }</mark>,
+            <mark>{'A horse'}</mark>,
             ', ',
-            <mark>{ 'a horse' }</mark>,
+            <mark>{'a horse'}</mark>,
             ', my kingdom for ',
-            <mark>{ 'a horse' }</mark>,
+            <mark>{'a horse'}</mark>,
             '.',
         ];
         expect(res).toEqual(expected);

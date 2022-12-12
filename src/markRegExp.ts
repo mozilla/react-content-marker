@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import type {TagFunction} from './types';
-
+import type { TagFunction } from './types';
 
 /**
  * Replaces matching patterns in a string with markers.
@@ -25,7 +24,7 @@ export default function markRegExp(
     content: string,
     rule: RegExp,
     tag: TagFunction,
-    matchIndex?: number,
+    matchIndex?: number
 ): React.ReactNode[] {
     const output: React.ReactNode[] = [];
     let remaining = content;
@@ -35,8 +34,7 @@ export default function markRegExp(
         let match;
         if (typeof matchIndex !== 'undefined' && matchIndex !== null) {
             match = matches[matchIndex];
-        }
-        else {
+        } else {
             // Use the last non-null matching form. This is to support several
             // capture groups in the rule.
             match = matches.reduce((acc, cur) => cur || acc, '');
