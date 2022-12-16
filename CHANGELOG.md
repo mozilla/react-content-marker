@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.2.0 (December 16, 2022)
+
+- Add library of built-in parser rules and `getRules()` as an accessor for them
+- Add `wrapTag` argument to `createMarker()`
+- Build a functional rather than class component from `createMarker()`
+- Update dev dependencies & migrate tests from `enzyme` to `@testing-library/react`
+
 ## 2.1.0 (February 21, 2022)
 
 - Use `tsc` rather than `babel` for the build
