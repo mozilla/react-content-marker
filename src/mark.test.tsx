@@ -1,6 +1,6 @@
-import { mark } from './index';
-import markRegExp from './markRegExp';
-import markTerm from './markTerm';
+import { mark } from './mark';
+import { markRegExp } from './markRegExp';
+import { markTerm } from './markTerm';
 
 describe('mark', () => {
     it('works correctly with a `term` rule', () => {

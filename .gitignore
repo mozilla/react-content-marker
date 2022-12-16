@@ -1,5 +1,5 @@
 # build output
-build/
+lib/
 
 # Node modules
 node_modules/

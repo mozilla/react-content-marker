@@ -17,8 +17,8 @@
     "occurence",
     "substring"
   ],
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "jest",
@@ -26,9 +26,8 @@
     "prettier": "prettier --write src/"
   },
   "files": [
-    "build",
-    "!build/*.test.d.ts",
-    "!build/*.test.js"
+    "lib",
+    "!lib/**/*.test.*"
   ],
   "prettier": {
     "arrowParens": "avoid",
