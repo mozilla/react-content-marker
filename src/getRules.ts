@@ -11,6 +11,7 @@ import { fluentTerm } from './parsers/fluentTerm';
 import { javaFormattingVariable } from './parsers/javaFormattingVariable';
 import { jsonPlaceholder } from './parsers/jsonPlaceholder';
 import { leadingSpace } from './parsers/leadingSpace';
+import { mozillaPrintfPattern } from './parsers/mozillaPrintfPattern';
 import { multipleSpaces } from './parsers/multipleSpaces';
 import { narrowNonBreakingSpace } from './parsers/narrowNonBreakingSpace';
 import { newlineCharacter } from './parsers/newlineCharacter';
@@ -109,7 +110,9 @@ export function getRules(opt?: {
         camelCaseString,
         optionPattern,
         punctuation,
-        numberString
+        numberString,
+
+        mozillaPrintfPattern,
     );
 
     return rules;
